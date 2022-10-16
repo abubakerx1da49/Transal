@@ -20,7 +20,12 @@ let translate = () => {
     toText.setAttribute("placeholder", "Translating...");
     let apiUrl = `https://api.mymemory.translated.net/get?q=${text}&langpair=${translateFrom}|${translateTo}`;
     fetch(apiUrl).then(res => res.json()).then(data => {
-        toText.value = data.responseData.translatedText;
+        if (data.responseData.translatedText == "NO QUERY SPECIFIED. EXAMPLE REQUEST: GET?Q=HELLO&LANGPAIR=EN|IT") {
+            toText.setAttribute("placeholder", "Translation");
+            toText.value = 'Translation'
+        } else {
+            toText.value = data.responseData.translatedText;
+        }
         // data.matches.forEach(data => {
         //     if (data.id === 0) {
         //         toText.value = data.translation;

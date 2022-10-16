@@ -17,7 +17,7 @@
 :root {
   --color-3: #F0F0F0;
   --color-4: lightgray;
-  --color-5: black;
+  --color-5: #191919;
 }
 
 body {
@@ -25,7 +25,7 @@ body {
   height: 100vh;
   font-family: 'Roboto', sans-serif;
   font-size: 14px;
-  background-color: var(--color-4);
+  background-color: var(--color-5);
 }
 
 
@@ -42,7 +42,6 @@ body {
   padding: 0 .2rem;
   z-index: 60;
   -webkit-app-region: drag;
-  box-shadow: 0 0 3px var(--color-5);
   color: var(--color-3);
   background-color: var(--color-5) !important;
 }
@@ -96,11 +95,34 @@ body {
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  padding: .2rem;
+}
+
+.sect .top_sect {
+  width: 100% !important;
+  height: 85%;
+  display: flex;
+  justify-content: center;
+}
+
+.sect .btns{
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  flex-direction: column;
+  width: 10%;
+}
+
+.btns button{
+  width: 100%;
+  padding: .3rem;
+  border: none;
+  outline: none;
 }
 
 .sect textarea{
-  width: 100% !important;
-  height: 85%;
+  width: 90% !important;
+  height: 100%;
   border: none;
   outline: none;
   background-color: transparent;
@@ -108,6 +130,7 @@ body {
   border-top-left-radius: 5px;
   border-top-right-radius: 5px;
   padding: .5rem;
+  color: orange;
 }
 
 .sect select{
@@ -115,11 +138,13 @@ body {
   height: 15%;
   border: none;
   outline: none;
-  background-color: var(--color-5);
-  color: var(--color-4);
+  background-color: var(--color-3);
+  color: var(--color-5);
   border-bottom-left-radius: 5px;
   border-bottom-right-radius: 5px;
   padding: 0 .3rem;
+  font-weight: bolder;
+  border-top: 2px solid var(--color-5);
 }
 
 select {
