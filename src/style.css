@@ -1,0 +1,130 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&family=Source+Code+Pro&display=swap');
+
+* {
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+  overflow: hidden;
+  user-select: none;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 0px;
+}
+
+
+:root {
+  --color-3: #F0F0F0;
+  --color-4: lightgray;
+  --color-5: black;
+}
+
+body {
+  width: 100vw;
+  height: 100vh;
+  font-family: 'Roboto', sans-serif;
+  font-size: 14px;
+  background-color: var(--color-4);
+}
+
+
+.appbar_section {
+  width: 100vw;
+  height: 38px;
+  min-height: 38px;
+  position: relative;
+  /* border: 1px solid black; */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: .75rem;
+  padding: 0 .2rem;
+  z-index: 60;
+  -webkit-app-region: drag;
+  box-shadow: 0 0 3px var(--color-5);
+  color: var(--color-3);
+  background-color: var(--color-5) !important;
+}
+
+.appbar_section .buttons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.appbar_section .buttons button {
+  height: 28px;
+  width: 25px;
+  min-height: 28px;
+  position: relative;
+  margin: 0;
+  border: none;
+  outline: none;
+  background-color: transparent;
+  cursor: pointer;
+  color: var(--color-3);
+  border-radius: 4px;
+  -webkit-app-region: no-drag;
+}
+
+.appbar_section .buttons button:hover {
+  color: #9a9696;
+}
+
+.appbar_section #location {
+  padding: 0 .5rem;
+}
+
+/* Section */
+.section{
+  width: 100%;
+  height: 92.5%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding: .3rem .4rem;
+}
+
+.section .sect{
+  width: 100%;
+  height: 49%;
+  background-color: var(--color-3);
+  border-radius: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.sect textarea{
+  width: 100% !important;
+  height: 85%;
+  border: none;
+  outline: none;
+  background-color: transparent;
+  resize: none;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  padding: .5rem;
+}
+
+.sect select{
+  width: 100%;
+  height: 15%;
+  border: none;
+  outline: none;
+  background-color: var(--color-5);
+  color: var(--color-4);
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+  padding: 0 .3rem;
+}
+
+select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  text-indent: 1px;
+  text-overflow: '';
+}
