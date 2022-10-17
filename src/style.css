@@ -107,7 +107,7 @@ body {
 
 .sect .btns{
   display: flex;
-  justify-content: space-evenly;
+  justify-content: flex-start;
   align-items: center;
   flex-direction: column;
   width: 10%;
@@ -130,7 +130,6 @@ body {
   border-top-left-radius: 5px;
   border-top-right-radius: 5px;
   padding: .5rem;
-  color: orange;
 }
 
 .sect select{
@@ -152,4 +151,8 @@ select {
   -moz-appearance: none;
   text-indent: 1px;
   text-overflow: '';
+}
+
+button:disabled{
+  color: gray !important;
 }

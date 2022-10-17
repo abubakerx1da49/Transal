@@ -1,5 +1,7 @@
 let { ipcRenderer, shell, BrowserWindow, screen } = require('electron');
 
+let msgs = document.querySelector("#msgs")
+
 let fromText = document.querySelector("#ta1")
 let toText = document.querySelector("#ta2")
 selectTag = document.querySelectorAll("select")
@@ -12,10 +14,12 @@ selectTag.forEach((tag, id) => {
     }
 });
 
+let text, translateFrom, translateTo;
+
 let translate = () => {
-    let text = fromText.value.trim(),
-        translateFrom = selectTag[0].value,
-        translateTo = selectTag[1].value;
+    text = fromText.value.trim();
+    translateFrom = selectTag[0].value;
+    translateTo = selectTag[1].value;
     // if (!text) return;
     toText.setAttribute("placeholder", "Translating...");
     let apiUrl = `https://api.mymemory.translated.net/get?q=${text}&langpair=${translateFrom}|${translateTo}`;
@@ -46,6 +50,70 @@ document.getElementById("s1").addEventListener("change", () => {
 document.getElementById("s2").addEventListener("change", () => {
     translate()
 })
+
+
+setInterval(() => {
+    if (fromText.value == "") {
+        document.getElementById("copy_from").disabled = true
+        document.getElementById("copy_to").disabled = true
+        document.getElementById("mail_from").disabled = true
+        document.getElementById("mail_to").disabled = true
+    } else {
+        document.getElementById("copy_from").disabled = false
+        document.getElementById("copy_to").disabled = false
+        document.getElementById("mail_from").disabled = false
+        document.getElementById("mail_to").disabled = false
+    }
+
+}, 500);
+
+// Copy Values
+document.getElementById("copy_from").addEventListener("click", () => {
+
+    // fromText.select();
+    fromText.setSelectionRange(0, 99999);
+    navigator.clipboard.writeText(fromText.value);
+
+    msgs.innerHTML = "Copied !"
+    setTimeout(() => {
+        msgs.innerHTML = ""
+    }, 1000);
+
+})
+
+document.getElementById("copy_to").addEventListener("click", () => {
+
+    // fromText.select();
+    toText.setSelectionRange(0, 99999);
+    navigator.clipboard.writeText(toText.value);
+
+    msgs.innerHTML = "Copied !"
+    setTimeout(() => {
+        msgs.innerHTML = ""
+    }, 1000);
+
+})
+
+// Handling Mail Functions
+document.getElementById("mail_from").addEventListener("click", () => {
+
+    shell.openExternal(`mailto:?body=${fromText.value}`)
+
+    msgs.innerHTML = "Mailing..."
+    setTimeout(() => {
+        msgs.innerHTML = ""
+    }, 1000);
+})
+document.getElementById("mail_to").addEventListener("click", () => {
+
+    shell.openExternal(`mailto:?body=${toText.value}`)
+
+    msgs.innerHTML = "Mailing..."
+    setTimeout(() => {
+        msgs.innerHTML = ""
+    }, 1000);
+})
+
 
 // icons.forEach(icon => {
 //     icon.addEventListener("click", ({target}) => {
